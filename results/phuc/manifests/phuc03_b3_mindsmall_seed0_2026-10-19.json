@@ -1,0 +1,284 @@
+{
+  "status": "completed",
+  "data_kind": "MIND-small",
+  "seed": 0,
+  "started_utc": "2026-10-19T12:18:29.261319+00:00",
+  "python": "3.13.5",
+  "baseline_config": {
+    "seed": 0,
+    "models": [
+      "B1_random",
+      "B2_cumulative",
+      "B2_24h"
+    ],
+    "cutoff": "day_start",
+    "window_hours": 24,
+    "click_source": "timestamped_impression_clicks_only",
+    "history_in_popularity": false,
+    "ranking_ties": "candidate_order",
+    "train_start": "2019-11-09",
+    "validation_start": "2019-11-14",
+    "test_start": "2019-11-15",
+    "test_end": "2019-11-16"
+  },
+  "evaluation_config": {
+    "metrics": [
+      "auc",
+      "mrr",
+      "ndcg@5",
+      "ndcg@10"
+    ],
+    "aggregation": "impression_macro",
+    "ranking_ties": "candidate_order",
+    "undefined_metric": "null_and_count",
+    "invalid_prediction": "error",
+    "history_quantiles": [
+      0.25,
+      0.75
+    ],
+    "history_quantile_method": "linear",
+    "history_fit_split": "train",
+    "cold_warm_grouping": "impression_composition",
+    "category_grouping": "impression_presence_overlapping",
+    "metadata_click_boundary": "strict_before_cutoff"
+  },
+  "selected_models": [
+    "B3_category"
+  ],
+  "content_config": {
+    "seed": 0,
+    "models": [
+      "B3_category",
+      "B4_semantic_plm"
+    ],
+    "history": "current_impression_all_ids",
+    "category_score": "subcategory_probability_category_fallback",
+    "empty_profile_score": 0.0,
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "text": "title_dot_abstract_strip_outer",
+    "max_seq_length": 256,
+    "normalize_news": true,
+    "user_pooling": "mean_then_cosine",
+    "dimension": 384,
+    "device": "cpu",
+    "batch_size": 64
+  },
+  "embedding_cache": null,
+  "inputs": [
+    {
+      "path": "data/raw/train/behaviors.tsv",
+      "bytes": 92019716,
+      "sha256": "a424547c8fa17c9ea4879c2110221c2b2f2709f4f7615ede0b0d8e4765158658"
+    },
+    {
+      "path": "data/raw/dev/behaviors.tsv",
+      "bytes": 42838544,
+      "sha256": "b6c460e33b1a8693252ded6e626da7d3ccf78920eea2ec11889020bb7d8443ef"
+    },
+    {
+      "path": "data/raw/train/news.tsv",
+      "bytes": 41202121,
+      "sha256": "cd49d7da275e9c405f627d75a0de9d4ec6ad43ff8a8db5d23a447591676e09d6"
+    },
+    {
+      "path": "data/raw/dev/news.tsv",
+      "bytes": 33519092,
+      "sha256": "e5d144667558c449d16084fe6bfa01940c2f5d5785ea9f9110292bc3b94eb822"
+    }
+  ],
+  "git_base_revision": "e06ebbb430118109e8f72811d62163324a943217",
+  "code_sha256": {
+    "scripts/run_baselines.py": "cdf6f832029633222c859acd10934820ec02370c78e5f63fb07288011dfdbcf9",
+    "src/baselines/base.py": "b731597fa223530d166e95a19d3a50d40dd7b9d8c8c35af92ea25c9917987b49",
+    "src/baselines/b1_random.py": "3bed95ce1e3e9adcf190461fd606b13adb2a066891b728d316f8ea52aad21cd6",
+    "src/baselines/b2_popularity.py": "9cb25ff496385dff0c82b12a970604853d7291e57765baaa37cd7da57cff3ba1",
+    "src/data_loader/mind_reader.py": "765ae010bfe081e4dbc1f9ac23e7f6be92e0a4ac72821cb1b26ea9e2b28f1654",
+    "src/data_loader/temporal_split.py": "ce75aac3064fd337288768be07fe5e96c41f9510e4e649d852f99eb2159e3f5f",
+    "src/data_loader/schema.py": "0a1fe4c76d48b82764d67db4bfaec04088d3a06cbc3718777b853d9b5d068b1d",
+    "src/evaluation/evaluator.py": "ca612d80910d79f0e066c68b5637dfa244d289ebff29cdf09b0a668304793adf",
+    "src/evaluation/metrics.py": "59aa55a4729e53e4a23a89211fce065fa46c69bf508d8b2189fc02bfb7f6d840",
+    "src/evaluation/group_analyzer.py": "8e6eb2a4550324e19f3d7107407d652ed6f67cd96c8848a024d38b0efb69a1ad",
+    "requirements.txt": "41ac4bf4f56e840e21f17088fbc82bbe7fb684c132b7ba46dd51b0061e98fc47",
+    "src/baselines/b3_category.py": "f0c48727d4065dd88d767221502a41ca624e62e8dde2c85ddfc6b4ea03d0647e",
+    "src/baselines/b4_semantic_plm.py": "b8e4909a3fdf7893beab520e20769708439a79bf3a6d3c7ea2a63b08aaeca208",
+    "scripts/cache_plm_embeddings.py": "e0c544d084852b693cb1062e32424172822ba433ccda08162a8d53d131a74286"
+  },
+  "source_policy": "History excluded; cumulative observed impression clicks, not full Ghist",
+  "cold_warm_policy": "cumulative observed clicks even for B2_24h",
+  "history_threshold_source": "train 09-13 only; unchanged for validation and test",
+  "content_history_policy": "current impression History only; all entries, duplicates retained; assumed before impression, not proven before day-start; no label updates",
+  "random_algorithm": "sha256([seed,source,impression_id,news_id]); top 53 bits / 2**53",
+  "splits": {
+    "train": {
+      "impressions": 126695,
+      "clicks": 189519,
+      "candidates": 4621015,
+      "min_time": "2019-11-09T00:00:19",
+      "max_time": "2019-11-13T23:59:21"
+    },
+    "validation": {
+      "impressions": 30270,
+      "clicks": 46825,
+      "candidates": 1222429,
+      "min_time": "2019-11-14T00:00:00",
+      "max_time": "2019-11-14T23:59:13"
+    },
+    "train_final": {
+      "impressions": 156965,
+      "clicks": 236344,
+      "candidates": 5843444,
+      "min_time": "2019-11-09T00:00:19",
+      "max_time": "2019-11-14T23:59:13"
+    },
+    "test": {
+      "impressions": 73152,
+      "clicks": 111383,
+      "candidates": 2740998,
+      "min_time": "2019-11-15T00:00:01",
+      "max_time": "2019-11-15T23:58:03"
+    }
+  },
+  "news_count": 65238,
+  "runs": [
+    {
+      "split": "validation",
+      "model": "B3_category",
+      "seed": 0,
+      "source_end": "2019-11-14T00:00:00",
+      "click_source_impressions": 126695,
+      "click_source_events": 189519,
+      "overall": [
+        {
+          "metric": "auc",
+          "mean": 0.586645207880361,
+          "n_impressions": 30270,
+          "n_valid": 30270,
+          "n_undefined": 0
+        },
+        {
+          "metric": "mrr",
+          "mean": 0.262718713844252,
+          "n_impressions": 30270,
+          "n_valid": 30270,
+          "n_undefined": 0
+        },
+        {
+          "metric": "ndcg@5",
+          "mean": 0.2784275017315943,
+          "n_impressions": 30270,
+          "n_valid": 30270,
+          "n_undefined": 0
+        },
+        {
+          "metric": "ndcg@10",
+          "mean": 0.33717686042829337,
+          "n_impressions": 30270,
+          "n_valid": 30270,
+          "n_undefined": 0
+        }
+      ],
+      "history_thresholds": {
+        "q25": 8.0,
+        "q75": 42.0,
+        "n_train": 126695,
+        "n_positive_history": 124229,
+        "training_sources": [
+          "MINDsmall_train"
+        ],
+        "max_train_time": "2019-11-13T23:59:21"
+      },
+      "libraries": {
+        "numpy": "2.5.4",
+        "scikit-learn": "1.9.1",
+        "PyYAML": "6.0.3",
+        "pytest": "9.1.1"
+      },
+      "predictions": "D:\\Phuc\\Dai hoc\\Nam bon\\MXH\\PROJECT\\mind-temporal-eval-baselines\\outputs\\predictions\\phuc03_b3_mindsmall_seed0_2026-10-19\\validation\\B3_category\\per_impression.csv",
+      "content_diagnostics": {
+        "impressions": 30270,
+        "empty_history_impressions": 772,
+        "history_items": 1001673,
+        "missing_history_category_items": 0,
+        "missing_history_subcategory_items": 0,
+        "no_usable_profile_impressions": 772,
+        "candidate_items": 1222429,
+        "missing_candidate_metadata_items": 0,
+        "missing_candidate_category_items": 0,
+        "missing_candidate_subcategory_items": 0,
+        "no_profile_or_metadata_candidates": 30575
+      },
+      "missing_category_candidates": 0
+    },
+    {
+      "split": "test",
+      "model": "B3_category",
+      "seed": 0,
+      "source_end": "2019-11-15T00:00:00",
+      "click_source_impressions": 156965,
+      "click_source_events": 236344,
+      "overall": [
+        {
+          "metric": "auc",
+          "mean": 0.6046322994805222,
+          "n_impressions": 73152,
+          "n_valid": 73152,
+          "n_undefined": 0
+        },
+        {
+          "metric": "mrr",
+          "mean": 0.29368867078449784,
+          "n_impressions": 73152,
+          "n_valid": 73152,
+          "n_undefined": 0
+        },
+        {
+          "metric": "ndcg@5",
+          "mean": 0.31955177868709744,
+          "n_impressions": 73152,
+          "n_valid": 73152,
+          "n_undefined": 0
+        },
+        {
+          "metric": "ndcg@10",
+          "mean": 0.37869487135356694,
+          "n_impressions": 73152,
+          "n_valid": 73152,
+          "n_undefined": 0
+        }
+      ],
+      "history_thresholds": {
+        "q25": 8.0,
+        "q75": 42.0,
+        "n_train": 126695,
+        "n_positive_history": 124229,
+        "training_sources": [
+          "MINDsmall_train"
+        ],
+        "max_train_time": "2019-11-13T23:59:21"
+      },
+      "libraries": {
+        "numpy": "2.5.4",
+        "scikit-learn": "1.9.1",
+        "PyYAML": "6.0.3",
+        "pytest": "9.1.1"
+      },
+      "predictions": "D:\\Phuc\\Dai hoc\\Nam bon\\MXH\\PROJECT\\mind-temporal-eval-baselines\\outputs\\predictions\\phuc03_b3_mindsmall_seed0_2026-10-19\\test\\B3_category\\per_impression.csv",
+      "content_diagnostics": {
+        "impressions": 73152,
+        "empty_history_impressions": 2214,
+        "history_items": 2362514,
+        "missing_history_category_items": 0,
+        "missing_history_subcategory_items": 0,
+        "no_usable_profile_impressions": 2214,
+        "candidate_items": 2740998,
+        "missing_candidate_metadata_items": 0,
+        "missing_candidate_category_items": 0,
+        "missing_candidate_subcategory_items": 0,
+        "no_profile_or_metadata_candidates": 82907
+      },
+      "missing_category_candidates": 0
+    }
+  ],
+  "finished_utc": "2026-10-19T12:19:08.060942+00:00"
+}

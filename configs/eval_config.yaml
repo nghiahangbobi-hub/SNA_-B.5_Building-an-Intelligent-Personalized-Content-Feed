@@ -1,0 +1,12 @@
+# PHUC-01 approved policy. This file contains no thresholds fitted on test data.
+metrics: [auc, mrr, ndcg@5, ndcg@10]
+aggregation: impression_macro
+ranking_ties: candidate_order
+undefined_metric: null_and_count
+invalid_prediction: error
+history_quantiles: [0.25, 0.75]
+history_quantile_method: linear
+history_fit_split: train
+cold_warm_grouping: impression_composition
+category_grouping: impression_presence_overlapping
+metadata_click_boundary: strict_before_cutoff

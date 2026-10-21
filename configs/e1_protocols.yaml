@@ -1,0 +1,13 @@
+ticket: PHUC-04
+seed: 0
+model: B2_cumulative
+protocols: [gts_clean, random, gts_static]
+period: ['2019-11-09', '2019-11-16']
+clean_cutoff: day_start_strict
+random_ratios: [80, 10, 10]
+random_algorithm: sha256_seed_source_impression_id
+random_test_source: train_plus_validation
+static_source: all_09_15_including_evaluation_labels
+click_timestamp: impression_timestamp_not_actual_click_time
+history_in_popularity: false
+group_thresholds: not_fitted_overall_comparison_only

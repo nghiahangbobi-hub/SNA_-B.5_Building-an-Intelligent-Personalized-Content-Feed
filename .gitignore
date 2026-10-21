@@ -1,0 +1,16 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Data & Cache (Giữ cấu trúc thư mục nhưng bỏ qua file nặng)
+data/raw/*
+!data/raw/.gitkeep
+data/splits/*
+!data/splits/.gitkeep
+data/cache/*
+!data/cache/.gitkeep
+outputs/predictions/*
+!outputs/predictions/.gitkeep

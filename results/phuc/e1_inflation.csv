@@ -1,0 +1,17 @@
+protocol,split,metric,reference_protocol,reference_mean,mean,absolute_delta,relative_delta_pct,reason,same_evaluation_set,interpretation
+random,validation,auc,gts_clean,0.5162956361101749,0.6022701272188172,0.0859744911086423,16.652182411686272,,False,different_impressions; split_composition_and_temporal_leakage
+random,validation,mrr,gts_clean,0.21501765844013485,0.298095351232632,0.08307769279249713,38.637613950031735,,False,different_impressions; split_composition_and_temporal_leakage
+random,validation,ndcg@5,gts_clean,0.21680688078767524,0.3186312609485469,0.10182438016087164,46.965474430948056,,False,different_impressions; split_composition_and_temporal_leakage
+random,validation,ndcg@10,gts_clean,0.2778410639545543,0.3723928214875461,0.09455175753299178,34.030879448567525,,False,different_impressions; split_composition_and_temporal_leakage
+random,test,auc,gts_clean,0.531751528369352,0.6009325358232108,0.0691810074538588,13.010025126962308,,False,different_impressions; split_composition_and_temporal_leakage
+random,test,mrr,gts_clean,0.23820138108047803,0.2987218966414749,0.060520515560996885,25.407289952088732,,False,different_impressions; split_composition_and_temporal_leakage
+random,test,ndcg@5,gts_clean,0.24604210472429233,0.32084572660290483,0.0748036218786125,30.40277271340825,,False,different_impressions; split_composition_and_temporal_leakage
+random,test,ndcg@10,gts_clean,0.3098167064622724,0.3741877812985923,0.06437107483631993,20.777147743696208,,False,different_impressions; split_composition_and_temporal_leakage
+gts_static,validation,auc,gts_clean,0.5162956361101749,0.5866190733392734,0.0703234372290985,13.620769247426262,,True,same_impressions; includes_evaluation_labels
+gts_static,validation,mrr,gts_clean,0.21501765844013485,0.24916377344892024,0.034146115008785394,15.880609646901323,,True,same_impressions; includes_evaluation_labels
+gts_static,validation,ndcg@5,gts_clean,0.21680688078767524,0.26094862388059964,0.0441417430929244,20.359936424782376,,True,same_impressions; includes_evaluation_labels
+gts_static,validation,ndcg@10,gts_clean,0.2778410639545543,0.3192241030636365,0.0413830391090822,14.89450066166285,,True,same_impressions; includes_evaluation_labels
+gts_static,test,auc,gts_clean,0.531751528369352,0.5993636260382008,0.06761209766884879,12.714979470991903,,True,same_impressions; includes_evaluation_labels
+gts_static,test,mrr,gts_clean,0.23820138108047803,0.28919623240754144,0.05099485132706341,21.40829372850464,,True,same_impressions; includes_evaluation_labels
+gts_static,test,ndcg@5,gts_clean,0.24604210472429233,0.3113205151894078,0.06527841046511546,26.53139816791299,,True,same_impressions; includes_evaluation_labels
+gts_static,test,ndcg@10,gts_clean,0.3098167064622724,0.37230144040468777,0.06248473394241538,20.16829068255052,,True,same_impressions; includes_evaluation_labels

@@ -1,0 +1,12 @@
+# PHUC-02 approved scope. B3/B4 and E1 are not implemented by this runner.
+seed: 0
+models: [B1_random, B2_cumulative, B2_24h]
+cutoff: day_start
+window_hours: 24
+click_source: timestamped_impression_clicks_only
+history_in_popularity: false
+ranking_ties: candidate_order
+train_start: '2019-11-09'
+validation_start: '2019-11-14'
+test_start: '2019-11-15'
+test_end: '2019-11-16'
